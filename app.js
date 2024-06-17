@@ -33,3 +33,5 @@ ball.addEventListener("click", () => {
   });
   ball.classList.toggle("active");
 });
+
+//interactive javascript code with event listeners

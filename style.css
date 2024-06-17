@@ -29,7 +29,7 @@
   
   .logo {
     font-size: 30px;
-    color: #4dbf00;
+    color: #d2e411;
   }
   
   .menu-container {
@@ -136,7 +136,7 @@
   }
   
   .featured-button {
-    background-color: #4dbf00;
+    background-color: #4beaed;
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
@@ -272,3 +272,4 @@
           display: none;
       }
   }
+
