@@ -25,6 +25,7 @@ body {
   background-attachment: fixed;
 }
 
+/* Navbar Styles - Enhanced for Bootstrap */
 .navbar {
   width: 100%;
   height: auto;
@@ -34,7 +35,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 0;
+  padding: 0.5rem 0;
   transition: all 0.5s;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -57,7 +58,7 @@ body {
 }
 
 .logo {
-  font-size: 30px;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: var(--primary-color);
   font-weight: bold;
   text-transform: uppercase;
@@ -92,6 +93,17 @@ body {
   list-style: none;
   margin-bottom: 0;
   padding-left: 0;
+}
+
+@media (max-width: 991.98px) {
+  .menu-list {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .menu-list-item {
+    margin-bottom: 0.75rem;
+  }
 }
 
 .menu-list-item {
@@ -135,15 +147,23 @@ body {
   box-shadow: 0 0 8px var(--primary-glow);
 }
 
+/* Bootstrap Navbar Toggle Button */
 .navbar-toggler {
   background-color: transparent;
   border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.5);
+  outline: none;
 }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+/* Profile Container */
 .profile-container {
   flex: 2;
   justify-content: flex-end;
@@ -163,10 +183,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.toggle {
-  display: none;
-}
-
+/* Main Container */
 .container {
   background-color: var(--background-dark);
   min-height: calc(100vh - 70px);
@@ -181,12 +198,34 @@ body {
   padding: 0 4%;
 }
 
+/* Featured Content Section - Enhanced Responsiveness */
 .featured-content {
   height: 80vh;
   padding: 50px 0 0 50px;
   background-size: cover !important;
   background-position: center top !important;
   position: relative;
+}
+
+@media (max-width: 991.98px) {
+  .featured-content {
+    height: 60vh;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .featured-content {
+    height: 50vh;
+    padding: 20px 15px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .featured-content {
+    height: 40vh;
+    padding: 15px 10px;
+  }
 }
 
 .featured-content::before {
@@ -220,12 +259,30 @@ body {
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
 }
 
+@media (max-width: 767.98px) {
+  .featured-title {
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+}
+
 .featured-info {
   margin: 15px 0;
   display: flex;
   align-items: center;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 575.98px) {
+  .featured-info {
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  
+  .featured-rating, .featured-year, .featured-seasons {
+    margin-bottom: 5px;
+  }
 }
 
 .featured-rating {
@@ -246,7 +303,7 @@ body {
   max-width: 500px;
   color: #fff;
   margin: 20px 0;
-  font-size: 1.2vw;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
   position: relative;
   z-index: 2;
@@ -254,6 +311,24 @@ body {
   line-height: 1.5;
 }
 
+@media (max-width: 767.98px) {
+  .featured-desc {
+    max-width: 100%;
+    margin: 10px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .featured-desc {
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* Featured Buttons */
 .featured-buttons {
   display: flex;
   margin-top: 20px;
@@ -261,9 +336,15 @@ body {
   z-index: 2;
 }
 
+@media (max-width: 575.98px) {
+  .featured-buttons {
+    margin-top: 10px;
+  }
+}
+
 .featured-button {
   padding: 10px 25px;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
   border-radius: 4px;
   margin-right: 10px;
   display: flex;
@@ -275,6 +356,13 @@ body {
   border: none;
   letter-spacing: 1px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 575.98px) {
+  .featured-button {
+    padding: 8px 15px;
+    margin-right: 8px;
+  }
 }
 
 .play-button {

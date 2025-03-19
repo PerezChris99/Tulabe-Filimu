@@ -11,10 +11,12 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="responsive.css">
   <title>Tulabe Filimu | Future of Cinema</title>
 </head>
 
 <body>
+  <!-- Responsive Navbar with Bootstrap -->
   <nav class="navbar navbar-expand-lg">
     <div class="navbar-container container-fluid">
       <div class="logo-container">
@@ -29,13 +31,13 @@
           <li class="menu-list-item nav-item">TV Shows</li>
           <li class="menu-list-item nav-item">Movies</li>
           <li class="menu-list-item nav-item">New & Popular</li>
-          <li class="menu-list-item nav-item">My List</li>
-          <li class="menu-list-item nav-item">Browse by Languages</li>
+          <li class="menu-list-item nav-item d-none d-md-block">My List</li>
+          <li class="menu-list-item nav-item d-none d-lg-block">Browse by Languages</li>
         </ul>
         <div class="profile-container d-flex align-items-center">
-          <i class="fas fa-search me-4" style="font-size: 20px;"></i>
-          <div class="notification-icon position-relative me-4">
-            <i class="fas fa-bell" style="font-size: 20px;"></i>
+          <i class="fas fa-search me-3 me-md-4 d-none d-sm-block" style="font-size: 18px;"></i>
+          <div class="notification-icon position-relative me-3 me-md-4 d-none d-sm-block">
+            <i class="fas fa-bell" style="font-size: 18px;"></i>
             <span class="notification-badge position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
           </div>
           <img class="profile-picture" src="img/profile.jpg" alt="">
@@ -47,11 +49,12 @@
     </div>
   </nav>
   
-  <div class="container">
+  <div class="container p-0">
     <div class="content-container">
+      <!-- Responsive Featured Content -->
       <div class="featured-content"
         style="background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%), url('img/f-1.jpg');">
-        <img class="featured-title" src="img/f-t-1.png" alt="Featured Title">
+        <img class="featured-title img-fluid" src="img/f-t-1.png" alt="Featured Title">
         <div class="featured-info">
           <span class="featured-rating">98% Match</span>
           <span class="featured-year">2023</span>
@@ -70,21 +73,23 @@
         </div>
       </div>
       
-      <div class="category-selector d-none d-md-flex">
-        <span class="category-title">Categories:</span>
+      <!-- Responsive Category Selector -->
+      <div class="category-selector d-flex">
+        <span class="category-title d-none d-sm-block">Categories:</span>
         <div class="category-options">
-          <div class="category-option active">All</div>
-          <div class="category-option">Series</div>
-          <div class="category-option">Films</div>
+          <div class="category-option active" data-category="all">All</div>
+          <div class="category-option" data-category="series">Series</div>
+          <div class="category-option" data-category="films">Films</div>
         </div>
       </div>
       
+      <!-- Movie List Container with Bootstrap Grid -->
       <div class="movie-list-container">
         <h1 class="movie-list-title">Popular on Tulaflix</h1>
         <div class="movie-list-wrapper position-relative">
-          <i class="fas fa-chevron-left arrow left"></i>
-          <div class="movie-list row flex-nowrap">
-            <div class="movie-list-item col-auto">
+          <i class="fas fa-chevron-left arrow left d-none d-md-flex"></i>
+          <div class="movie-list row flex-nowrap gx-2 gx-md-3">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/1.jpeg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Her</span>
@@ -96,7 +101,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/2.jpeg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Star Wars</span>
@@ -108,7 +113,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/3.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Storm</span>
@@ -120,7 +125,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/4.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">1917</span>
@@ -132,7 +137,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/5.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Avengers</span>
@@ -144,7 +149,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/6.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Inception</span>
@@ -157,16 +162,17 @@
               </div>
             </div>
           </div>
-          <i class="fas fa-chevron-right arrow right"></i>
+          <i class="fas fa-chevron-right arrow right d-none d-md-flex"></i>
         </div>
       </div>
       
+      <!-- Trending Now Section -->
       <div class="movie-list-container">
         <h1 class="movie-list-title">Trending Now</h1>
         <div class="movie-list-wrapper position-relative">
-          <i class="fas fa-chevron-left arrow left"></i>
-          <div class="movie-list row flex-nowrap">
-            <div class="movie-list-item col-auto">
+          <i class="fas fa-chevron-left arrow left d-none d-md-flex"></i>
+          <div class="movie-list row flex-nowrap gx-2 gx-md-3">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/7.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Dune</span>
@@ -178,7 +184,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="films">
               <img class="movie-list-item-img" src="img/8.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">No Time To Die</span>
@@ -190,7 +196,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/1.jpeg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Stranger Things</span>
@@ -202,7 +208,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/2.jpeg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">The Mandalorian</span>
@@ -215,16 +221,17 @@
               </div>
             </div>
           </div>
-          <i class="fas fa-chevron-right arrow right"></i>
+          <i class="fas fa-chevron-right arrow right d-none d-md-flex"></i>
         </div>
       </div>
       
+      <!-- Watch Again Section -->
       <div class="movie-list-container">
         <h1 class="movie-list-title">Watch Again</h1>
         <div class="movie-list-wrapper position-relative">
-          <i class="fas fa-chevron-left arrow left"></i>
-          <div class="movie-list row flex-nowrap">
-            <div class="movie-list-item col-auto">
+          <i class="fas fa-chevron-left arrow left d-none d-md-flex"></i>
+          <div class="movie-list row flex-nowrap gx-2 gx-md-3">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/3.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Breaking Bad</span>
@@ -236,7 +243,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/4.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Peaky Blinders</span>
@@ -248,7 +255,7 @@
                 </div>
               </div>
             </div>
-            <div class="movie-list-item col-auto">
+            <div class="movie-list-item col-6 col-sm-4 col-md-3 col-lg-2" data-category="series">
               <img class="movie-list-item-img" src="img/5.jpg" alt="">
               <div class="movie-info">
                 <span class="movie-list-item-title">Money Heist</span>
@@ -261,7 +268,7 @@
               </div>
             </div>
           </div>
-          <i class="fas fa-chevron-right arrow right"></i>
+          <i class="fas fa-chevron-right arrow right d-none d-md-flex"></i>
         </div>
       </div>
     </div>

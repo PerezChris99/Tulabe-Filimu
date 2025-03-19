@@ -1,0 +1,261 @@
+/**
+ * Tulabe Filimu - Streaming Platform
+ * Responsive styles for all device sizes
+ */
+
+/* 
+ * Bootstrap breakpoints:
+ * xs: 0
+ * sm: 576px
+ * md: 768px
+ * lg: 992px
+ * xl: 1200px
+ * xxl: 1400px
+ */
+
+/* Common responsive adjustments */
+@media (max-width: 1399.98px) {
+  /* Slight adjustments for large screens but not the largest */
+  .movie-list-title {
+    font-size: 1.6rem;
+  }
+  
+  .featured-content {
+    background-position: top 20% center !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  /* XL breakpoint adjustments */
+  .featured-title {
+    max-width: 450px;
+  }
+  
+  .featured-desc {
+    max-width: 450px;
+  }
+  
+  .movie-list-item:hover {
+    transform: scale(1.3);
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* LG breakpoint adjustments */
+  .navbar-collapse {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .menu-list {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .menu-list-item {
+    margin-bottom: 8px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-list-item:hover {
+    background-color: rgba(229, 9, 20, 0.2);
+  }
+  
+  .featured-content {
+    height: 60vh;
+    padding: 30px 20px;
+  }
+  
+  .featured-title {
+    max-width: 380px;
+  }
+  
+  .featured-desc {
+    max-width: 380px;
+    font-size: 1rem;
+  }
+  
+  .movie-list-title {
+    font-size: 1.4rem;
+  }
+  
+  .movie-list-item:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* MD breakpoint adjustments */
+  .featured-content {
+    height: 50vh;
+    padding: 20px 15px;
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.4) 100%), var(--feature-image) !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+  }
+  
+  .featured-title {
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+  
+  .featured-desc {
+    max-width: 100%;
+    margin: 10px 0;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .movie-list-item-img {
+    height: 120px;
+  }
+  
+  /* Disable hover effects on mobile */
+  .movie-list-item:hover {
+    transform: none;
+  }
+  
+  /* Improve mobile touch interaction for movie items */
+  .movie-info {
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* SM breakpoint adjustments */
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .featured-content {
+    height: 45vh;
+    padding: 15px 10px;
+  }
+  
+  .featured-desc {
+    -webkit-line-clamp: 2;
+    font-size: 0.9rem;
+  }
+  
+  .featured-buttons {
+    margin-top: 10px;
+  }
+  
+  .featured-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .featured-rating, .featured-year, .featured-seasons {
+    font-size: 0.8rem;
+    margin-right: 8px;
+  }
+  
+  .movie-list-title {
+    font-size: 1.2rem;
+  }
+  
+  .movie-list-item-img {
+    height: 100px;
+  }
+  
+  .category-option {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .movie-list-item-title {
+    font-size: 14px;
+  }
+  
+  .movie-list-item-year-category {
+    font-size: 11px;
+  }
+  
+  .movie-list-item-buttons {
+    margin-top: 5px;
+  }
+  
+  .movie-list-item-button {
+    width: 28px;
+    height: 28px;
+    margin-right: 6px;
+  }
+}
+
+/* Responsive accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode improvements */
+@media (prefers-contrast: more) {
+  :root {
+    --primary-color: #ff0000;
+    --text-muted: #dddddd;
+  }
+  
+  .featured-content::before {
+    background: rgba(0,0,0,0.7);
+  }
+  
+  .movie-info {
+    background: rgba(0,0,0,0.9);
+  }
+}
+
+/* Dark mode adaptations */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--background-darker);
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar, .featured-buttons, .movie-list-item-buttons, .arrow {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .featured-content {
+    height: auto !important;
+    background: none !important;
+  }
+  
+  .featured-content::before, .featured-content::after {
+    display: none;
+  }
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) {
+  .movie-list-item:hover {
+    transform: none;
+  }
+  
+  .movie-list-item-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .arrow {
+    opacity: 0.8;
+    width: 40px;
+  }
+}
