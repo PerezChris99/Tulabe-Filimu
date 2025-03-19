@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initCategorySelector();
   initMovieItemHovers();
   initResponsiveAdjustments();
+  
+  // New futuristic features
+  initFuturisticLoader();
+  initSectionAnimations();
+  initScrollEffects();
+  initParallaxEffect();
+  initDynamicGlowEffects();
 });
 
 // Handle navbar behavior
@@ -37,6 +44,9 @@ function initNavbarBehavior() {
   
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
+      // Add ripple effect to menu clicks
+      createRippleEffect(link);
+      
       // Make menu items clickable as navigation
       document.querySelectorAll('.menu-list-item').forEach(item => {
         item.classList.remove('active');
@@ -305,3 +315,182 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('mousedown', () => {
   document.body.classList.remove('keyboard-nav');
 });
+
+// Futuristic loader animation
+function initFuturisticLoader() {
+  const body = document.body;
+  
+  // Create loader element
+  const loaderDiv = document.createElement('div');
+  loaderDiv.className = 'futuristic-loader';
+  
+  const loaderIcon = document.createElement('div');
+  loaderIcon.className = 'loader-icon';
+  
+  // Create three animated circles
+  for (let i = 0; i < 3; i++) {
+    const circle = document.createElement('div');
+    circle.className = 'loader-circle';
+    loaderIcon.appendChild(circle);
+  }
+  
+  loaderDiv.appendChild(loaderIcon);
+  body.appendChild(loaderDiv);
+  
+  // Hide loader after content is loaded
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loaderDiv.classList.add('hidden');
+    }, 800);
+  });
+}
+
+// Initialize section appearance animations
+function initSectionAnimations() {
+  const movieListContainers = document.querySelectorAll('.movie-list-container');
+  
+  // Set initial delay for staggered animation
+  let delay = 100;
+  
+  // Create observer for scrolling animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add appear class with delay for staggered effect
+        setTimeout(() => {
+          entry.target.classList.add('appear');
+        }, delay);
+        delay += 150; // Increase delay for next section
+        
+        // Unobserve after animation is added
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 }); // Trigger when 10% of element is visible
+  
+  // Observe all movie list containers
+  movieListContainers.forEach(container => {
+    observer.observe(container);
+  });
+}
+
+// Initialize scroll effects and indicators
+function initScrollEffects() {
+  // Create scroll indicator
+  const scrollIndicator = document.createElement('div');
+  scrollIndicator.className = 'scroll-indicator';
+  scrollIndicator.innerHTML = '<i class="fas fa-chevron-up"></i>';
+  document.body.appendChild(scrollIndicator);
+  
+  // Handle scroll events
+  window.addEventListener('scroll', debounce(() => {
+    // Show/hide scroll indicator
+    if (window.scrollY > 300) {
+      scrollIndicator.classList.add('visible');
+    } else {
+      scrollIndicator.classList.remove('visible');
+    }
+    
+    // Animate elements as they come into view
+    animateElementsOnScroll();
+  }, 100));
+  
+  // Scroll to top when indicator is clicked
+  scrollIndicator.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// Animate elements as they come into view while scrolling
+function animateElementsOnScroll() {
+  const fadeElements = document.querySelectorAll('.fade-in-section');
+  
+  fadeElements.forEach(element => {
+    const elementTop = element.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (elementTop < windowHeight * 0.9) { // When element is 90% into viewport
+      element.classList.add('is-visible');
+    }
+  });
+}
+
+// Parallax effect for featured content
+function initParallaxEffect() {
+  const featuredContent = document.querySelector('.featured-content');
+  
+  if (!featuredContent) return;
+  
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    
+    // Only apply effect if the featured content is in view
+    if (scrollPosition < featuredContent.offsetHeight) {
+      // Create parallax effect by moving background position
+      const yPos = scrollPosition * 0.3;
+      featuredContent.style.backgroundPosition = `center ${30 + yPos}%`;
+    }
+  });
+  
+  // Mouse movement parallax for enhanced effect
+  featuredContent.addEventListener('mousemove', (e) => {
+    const xPos = (e.clientX / window.innerWidth - 0.5) * 20;
+    const yPos = (e.clientY / window.innerHeight - 0.5) * 10;
+    
+    featuredContent.style.backgroundPosition = `calc(center + ${xPos}px) calc(30% + ${yPos}px)`;
+  });
+}
+
+// Dynamic glow effects that follow mouse
+function initDynamicGlowEffects() {
+  const buttons = document.querySelectorAll('.featured-button, .movie-list-item-button');
+  const logo = document.querySelector('.logo');
+  
+  // Add glow effect to interactive elements
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    buttons.forEach(button => {
+      const rect = button.getBoundingClientRect();
+      const btnCenterX = rect.left + rect.width / 2;
+      const btnCenterY = rect.top + rect.height / 2;
+      
+      // Calculate distance from mouse to button
+      const distance = Math.sqrt(
+        Math.pow(mouseX - btnCenterX, 2) + 
+        Math.pow(mouseY - btnCenterY, 2)
+      );
+      
+      if (distance < 100) {
+        // Closer mouse = stronger glow
+        const intensity = 1 - (distance / 100);
+        button.style.boxShadow = `0 8px 20px rgba(0, 0, 0, 0.5), 0 0 ${15 + intensity * 15}px ${2 + intensity * 2}px var(--primary-glow)`;
+      } else {
+        button.style.boxShadow = '';
+      }
+    });
+    
+    // Dynamic logo effect
+    if (logo) {
+      const rect = logo.getBoundingClientRect();
+      const logoCenterX = rect.left + rect.width / 2;
+      const logoCenterY = rect.top + rect.height / 2;
+      
+      const distance = Math.sqrt(
+        Math.pow(mouseX - logoCenterX, 2) + 
+        Math.pow(mouseY - logoCenterY, 2)
+      );
+      
+      if (distance < 150) {
+        const intensity = 1 - (distance / 150);
+        logo.style.boxShadow = `0 8px 20px rgba(0, 0, 0, 0.5), 0 0 ${15 + intensity * 15}px ${2 + intensity * 2}px var(--primary-glow)`;
+      } else {
+        logo.style.boxShadow = '';
+      }
+    }
+  });
+}
